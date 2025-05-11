@@ -1,17 +1,40 @@
-[gd_scene load_steps=27 format=3 uid="uid://cjjvxgn2axgb2"]
+[gd_scene load_steps=49 format=3 uid="uid://cjjvxgn2axgb2"]
 
 [ext_resource type="Script" uid="uid://dwg15gpe1spw3" path="res://src/player/player_controller.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b3pbyjq4a3yl0" path="res://src/player/weapon/weapon_component.gd" id="2_cwolq"]
-[ext_resource type="SpriteFrames" uid="uid://da4r14g1m42s6" path="res://src/player/player_animations_ss.tres" id="2_x42xx"]
 [ext_resource type="Shader" uid="uid://dxqtuj6x7axii" path="res://src/player/vfx/s_clouds.tres" id="2_ylhto"]
 [ext_resource type="PackedScene" uid="uid://bl6n2yj8bx6r3" path="res://src/player/projectile.tscn" id="3_2smqc"]
 [ext_resource type="Script" uid="uid://bpnnmbbgsy1ra" path="res://addons/godot_state_charts/state_chart.gd" id="3_jiejy"]
 [ext_resource type="AnimationLibrary" uid="uid://dwser2v8a1huw" path="res://src/player/animations/animation_library.tres" id="3_x42xx"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://xw0yqepavsvl" path="res://src/player/animations/state_machine_anim.tres" id="4_l271a"]
 [ext_resource type="Script" uid="uid://d2frwrtcar1ga" path="res://addons/godot_state_charts/compound_state.gd" id="4_o822w"]
+[ext_resource type="Script" uid="uid://bjhkm7x4rj3nn" path="res://src/player/inventory.gd" id="4_p6grl"]
+[ext_resource type="Texture2D" uid="uid://b6454dmkyx7va" path="res://assets/anim/rico/anim_mc_idle_backward/anim_mc_idle_backward_0000.png" id="5_2smqc"]
+[ext_resource type="Texture2D" uid="uid://brxtvtkkykaao" path="res://assets/anim/rico/anim_mc_idle_forward/anim_mc_idle_forward_0000.png" id="5_wlj80"]
 [ext_resource type="Script" uid="uid://dievtw4ea6dt4" path="res://addons/godot_state_charts/atomic_state.gd" id="5_x42xx"]
+[ext_resource type="Texture2D" uid="uid://dpxcu2alcdcg2" path="res://assets/anim/rico/anim_mc_idle_forward/anim_mc_idle_forward_0001.png" id="6_6bm8s"]
 [ext_resource type="Script" uid="uid://d6qlb3u64wvs" path="res://addons/godot_state_charts/transition.gd" id="6_l271a"]
+[ext_resource type="Texture2D" uid="uid://beghfqek3pqb3" path="res://assets/anim/rico/anim_mc_idle_backward/anim_mc_idle_backward_0001.png" id="6_rl62b"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="7_o822w"]
+[ext_resource type="Texture2D" uid="uid://c0f1cxudtjk7v" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0000.png" id="9_wcxbk"]
+[ext_resource type="Texture2D" uid="uid://d171fha8vefwr" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0001.png" id="10_p6grl"]
+[ext_resource type="Texture2D" uid="uid://dnkjiksc0xxek" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0002.png" id="11_e7e1q"]
+[ext_resource type="Texture2D" uid="uid://vibfnr7xdj7m" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0003.png" id="12_xmpm3"]
+[ext_resource type="Texture2D" uid="uid://chfc26xi7wmdh" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0004.png" id="13_h0enb"]
+[ext_resource type="Texture2D" uid="uid://bvo1mswn6txuk" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0005.png" id="14_phdu6"]
+[ext_resource type="Texture2D" uid="uid://vkuh6ahydemr" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0006.png" id="15_4ptlo"]
+[ext_resource type="Texture2D" uid="uid://mgkhdhn62mkn" path="res://assets/anim/rico/anim_mc_walk_forward/anim_mc_walk_forward_0007.png" id="16_evlgt"]
+[ext_resource type="Texture2D" uid="uid://cpd4p28ianywo" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0000.png" id="17_gsylq"]
+[ext_resource type="Texture2D" uid="uid://dk8jqwbr42j02" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0001.png" id="18_utg71"]
+[ext_resource type="Texture2D" uid="uid://dm0uqjde07w7x" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0002.png" id="19_f0c71"]
+[ext_resource type="Texture2D" uid="uid://dfpnfp1ivwe56" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0003.png" id="20_fpqwn"]
+[ext_resource type="Texture2D" uid="uid://co8wt38rlox2l" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0004.png" id="21_8iif5"]
+[ext_resource type="Texture2D" uid="uid://dv5mdaqobwf6n" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0005.png" id="22_kpcs5"]
+[ext_resource type="Texture2D" uid="uid://cq20yjqbjnh0w" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0006.png" id="23_axsi3"]
+[ext_resource type="Texture2D" uid="uid://dnlqutr4a5q8j" path="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0007.png" id="24_rhq4p"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_e7e1q"]
+radius = 1.2
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ylhto"]
 emission_shape = 1
@@ -78,6 +101,89 @@ gradient = SubResource("Gradient_8afob")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_wlj80"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_wlj80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6bm8s")
+}],
+"loop": true,
+"name": &"idle_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_2smqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rl62b")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_wcxbk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_p6grl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e7e1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_xmpm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_h0enb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_phdu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4ptlo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_evlgt")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_gsylq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_utg71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_f0c71")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_fpqwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8iif5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_kpcs5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_axsi3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_rhq4p")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 5.0
+}]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0xm2m"]
 
 [node name="Player" type="CharacterBody3D"]
@@ -87,6 +193,18 @@ _speed = 200.0
 [node name="WeaponComponent" type="Node" parent="."]
 script = ExtResource("2_cwolq")
 _projectile_scene = ExtResource("3_2smqc")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("4_p6grl")
+
+[node name="Health" type="Node" parent="."]
+
+[node name="PickItems" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickItems"]
+shape = SubResource("SphereShape3D_e7e1q")
 
 [node name="Visuals" type="Node3D" parent="."]
 
@@ -122,8 +240,9 @@ distance_fade_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.198141, 0)
 pixel_size = 0.0011
 billboard = 1
-sprite_frames = ExtResource("2_x42xx")
+sprite_frames = SubResource("SpriteFrames_wlj80")
 animation = &"idle_down"
+autoplay = "idle_down"
 
 [node name="CollisionPlaceholder" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_0xm2m")
@@ -132,6 +251,7 @@ shape = SubResource("CapsuleShape3D_0xm2m")
 
 [node name="SFX" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13252, 1.1858)
+bus = &"SFX"
 
 [node name="CheckIfGround" type="RayCast3D" parent="."]
 visible = false
@@ -146,10 +266,13 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-callback_mode_discrete = 1
+callback_mode_discrete = 0
 tree_root = ExtResource("4_l271a")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_idle = false
+parameters/conditions/is_walking = false
 parameters/Idle/blend_position = -0.0756881
+parameters/Walk/blend_position = 0.51483
 
 [node name="PlayerStateChart" type="Node" parent="."]
 unique_name_in_owner = true
@@ -182,7 +305,7 @@ delay_in_seconds = "0.0
 script = ExtResource("6_l271a")
 to = NodePath("../Shooting")
 event = &"shoot"
-delay_in_seconds = "0.0F
+delay_in_seconds = "0.0
 
 "
 metadata/_custom_type_script = "uid://d6qlb3u64wvs"
@@ -263,6 +386,10 @@ offset_right = -27.0
 offset_bottom = -408.0
 initial_node_to_watch = NodePath("../PlayerStateChart")
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69696, 1.92308)
+
+[connection signal="body_entered" from="PickItems" to="Inventory" method="_on_pick_items_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_check_jump_grounded_state_physics_processing"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_grounded_state_physics_processing"]

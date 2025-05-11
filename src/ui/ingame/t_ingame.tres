@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://bq621qsps0nwg"]
 
-[ext_resource type="FontFile" uid="uid://dl4s5bbnbl1jw" path="res://src/ui/fonts/font.ttf" id="1_ogfug"]
+[ext_resource type="FontFile" uid="uid://bglu7olgc4ysk" path="res://assets/font.ttf" id="1_ogfug"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogfug"]
 content_margin_left = 64.0

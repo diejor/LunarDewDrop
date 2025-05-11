@@ -1,12 +1,65 @@
-[gd_scene load_steps=24 format=3 uid="uid://dt3drmupjo2oe"]
+[gd_scene load_steps=29 format=3 uid="uid://dt3drmupjo2oe"]
 
 [ext_resource type="Material" uid="uid://cle16r2v5m6bx" path="res://src/planet/material_planet.tres" id="1_fc0e3"]
+[ext_resource type="Script" uid="uid://bcot0vqyd13tp" path="res://src/levels/level_1.gd" id="1_frwdw"]
 [ext_resource type="PackedScene" uid="uid://cjjvxgn2axgb2" path="res://src/player/player.tscn" id="4_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://cmvwywpkoebi0" path="res://src/platform/platform.tscn" id="4_iygna"]
-[ext_resource type="Script" uid="uid://bku06nnwpk2hw" path="res://src/player/camera3rd.gd" id="5_7jktm"]
+[ext_resource type="Script" uid="uid://bku06nnwpk2hw" path="res://src/player/camera.gd" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://cqa4ocxckglvo" path="res://src/ui/ingame/in_popup.tscn" id="5_xk4xt"]
-[ext_resource type="Texture2D" uid="uid://cxss343iwb3w0" path="res://src/planet/eyes.png" id="6_iygna"]
+[ext_resource type="PackedScene" uid="uid://ngj6kjmcs6py" path="res://src/planet/face.tscn" id="7_frwdw"]
 [ext_resource type="PackedScene" uid="uid://byodlr5imq2j7" path="res://src/alien/alien.tscn" id="7_l80tk"]
+[ext_resource type="PackedScene" uid="uid://c575d2sfnlfl8" path="res://src/drops/dew_drop.tscn" id="9_q2d1y"]
+
+[sub_resource type="Animation" id="Animation_frwdw"]
+resource_name = "start_level"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/PlayerStateChart")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"jump"],
+"method": &"send_event"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"wake_up"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.56667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_process_input"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2d1y"]
+_data = {
+&"start_level": SubResource("Animation_frwdw")
+}
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jktm"]
 sky_top_color = Color(0.0156863, 0.101961, 0.176471, 1)
@@ -74,7 +127,7 @@ graph_data = {
 "type": "FastNoise3D"
 },
 "8": {
-"b": -1.5,
+"b": -0.5,
 "gui_position": Vector2(992, -160),
 "type": "Multiply"
 },
@@ -123,15 +176,25 @@ rings = 1
 bounce = 1.0
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iygna"]
-radius = 4.06497
+radius = 4.61368
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_iygna"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fcumj"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_l80tk"]
 viewport_path = NodePath("SubViewport")
 
-[node name="Level1" type="Node3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_q2d1y"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_frwdw")
+
+[node name="AnimationPlayerLevel" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_q2d1y")
+}
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -153,10 +216,12 @@ texture = SubResource("ViewportTexture_xk4xt")
 
 [node name="Label" parent="Platform/InPopup/SubViewport/Control" index="0"]
 text = "jump: [wave amp=25.0 freq=5.0 connected=1]SPACE[/wave]
-move: [rainbow freq=0.5 sat=1.0 val=1.0 speed=0.5]WASD[/rainbow]"
+move: [rainbow freq=0.5 sat=1.0 val=1.0 speed=0.5]WASD[/rainbow]
+drop item: B"
 fit_content = true
 
 [node name="Player" parent="." instance=ExtResource("4_fc0e3")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60688, 6.38393, 1.96499)
 collision_layer = 7
 collision_mask = 3
@@ -178,7 +243,6 @@ far = 100.0
 script = ExtResource("5_7jktm")
 target = NodePath("../Player")
 offset = Vector3(0, 4, 2)
-smoothing_speed = 0.01
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 collision_layer = 4
@@ -188,30 +252,46 @@ physics_material_override = SubResource("PhysicsMaterial_iygna")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("SphereShape3D_iygna")
 
-[node name="Face" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78866, -2.78239, 0.0125334)
-size = Vector3(1, 1.5, 1.5)
-texture_albedo = ExtResource("6_iygna")
+[node name="Face" parent="." instance=ExtResource("7_frwdw")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.87333e-08, 4.20401)
 
-[node name="InPopup" parent="Face" instance=ExtResource("5_xk4xt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267156, -1.26256, 0)
-texture = SubResource("ViewportTexture_iygna")
-
-[node name="Label" parent="Face/InPopup/SubViewport/Control" index="0"]
-text = "DEWDROPS!"
+[node name="InPopup" parent="Face" index="2"]
+texture = SubResource("ViewportTexture_fcumj")
 
 [node name="Alien" parent="." instance=ExtResource("7_l80tk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43863, 0, 0)
 
-[node name="InPopup" parent="Alien" instance=ExtResource("5_xk4xt")]
+[node name="Alien2" parent="." instance=ExtResource("7_l80tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.92206, -2.94012, 3.31478)
+
+[node name="InPopup" parent="Alien2" instance=ExtResource("5_xk4xt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.986679, 0.8704, 0)
 texture = SubResource("ViewportTexture_l80tk")
 
-[node name="Label" parent="Alien/InPopup/SubViewport/Control" index="0"]
+[node name="Label" parent="Alien2/InPopup/SubViewport/Control" index="0"]
 text = "shoot: [pulse freq=1.0 color=#c9232760 ease=-2.0]Q[/pulse]"
+
+[node name="Alien3" parent="." instance=ExtResource("7_l80tk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88735, -2.94012, -5.1832)
+
+[node name="DewDrop" parent="." instance=ExtResource("9_q2d1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92052, 4.70959)
+
+[node name="InPopup" parent="DewDrop" instance=ExtResource("5_xk4xt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177597, 0.678093, 0.572556)
+texture = SubResource("ViewportTexture_q2d1y")
+
+[node name="Label" parent="DewDrop/InPopup/SubViewport/Control" index="0"]
+text = "dewdrop"
 
 [editable path="Platform"]
 [editable path="Platform/InPopup"]
+[editable path="Player"]
+[editable path="Face"]
 [editable path="Face/InPopup"]
 [editable path="Alien"]
-[editable path="Alien/InPopup"]
+[editable path="Alien2"]
+[editable path="Alien2/InPopup"]
+[editable path="Alien3"]
+[editable path="DewDrop"]
+[editable path="DewDrop/InPopup"]

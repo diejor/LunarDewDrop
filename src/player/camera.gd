@@ -3,38 +3,58 @@ extends Camera3D
 @export var target: Node3D
 @export var planet_center: Vector3 = Vector3.ZERO
 @export var offset: Vector3 = Vector3(0, 5, 5)
-@export var smoothing_speed: float = 5.0
+
+@export var gameplay_speed = 5.0
+@export var main_menu_speed: float = 0.01
+
+var smoothing_speed: float = 5.0
+
+func _ready() -> void:
+	
+	# WAIT FOR LEVEL TO START
+	smoothing_speed = main_menu_speed
 
 func _process(delta: float) -> void:
 	if not target:
 		return
-	
-	# 1) Compute planet_up based on the target's position relative to the planet center
+
+	# 1) Get the local 'up' for the target's position on the planet
 	var planet_up = (target.global_transform.origin - planet_center).normalized()
-	
-	# 2) Find target's forward direction, ignoring tilt around planet_up
-	#    (Typical Godot 3D forward is -Z)
+
+	# 2) Flatten the target's forward vector so it lies horizontally on the tangent plane
 	var forward = -target.global_transform.basis.z
-	# Flatten the forward vector against planet_up
 	forward = forward - forward.dot(planet_up) * planet_up
 	forward = forward.normalized()
 
-	# 3) Build a basis aligned horizontally with respect to planet_up
+	# 3) Build a new basis (right, up, forward) that's "horizontal"
 	var right = forward.cross(planet_up).normalized()
-	var up = right.cross(forward).normalized()  # Recomputed up to ensure orthonormal
+	var up = right.cross(forward).normalized()  # re-orthonormalize
 	var target_basis = Basis(right, up, forward)
-	
-	# 4) Compute the final desired camera position
-	#    - Move to the target's position, then add the local-space offset
-	#      in the direction of 'target_basis'
-	var target_position = target.global_transform.origin + target_basis.xform(offset)
-	
-	# 5) Smoothly interpolate from the camera’s current transform to the target transform
-	
-	# (A) Slerp the rotation
-	#     We'll use an exponential approach so that smoothing behaves well regardless of framerate.
-	var alpha = 1.0 - exp(-smoothing_speed * delta)  # 0..1
-	transform.basis = transform.basis.slerp(target_basis, alpha)
 
-	# (B) Lerp the position
-	transform.origin = transform.origin.lerp(target_position, alpha)
+	# 4) Compute the final desired position
+	#    This takes the target's global position and moves "behind & above" it
+	var desired_position = target.global_transform.origin + target_basis * offset
+
+	# 5) Construct a transform that "looks at" the target from that new position
+	var desired_transform = Transform3D()
+	desired_transform.origin = desired_position
+	# 'looking_at()' sets the basis to look at target's global position, with planet_up as the up vector
+	desired_transform.basis = desired_transform.looking_at(target.global_transform.origin, planet_up).basis
+
+	# 6) Compute interpolation factor for smoothing (exponential approach)
+	var alpha = 1.0 - exp(-smoothing_speed * delta)  # yields a 0..1 factor based on smoothing_speed
+
+	# 7) Convert the current and desired orientation to Quaternions for slerp
+	var current_quat = Quaternion(transform.basis)
+	var desired_quat = Quaternion(desired_transform.basis)
+	var final_quat = current_quat.slerp(desired_quat, alpha)
+
+	# 8) Smoothly interpolate position
+	var final_pos = transform.origin.lerp(desired_transform.origin, alpha)
+
+	# 9) Apply the results
+	transform.origin = final_pos
+	transform.basis = Basis(final_quat)
+
+func wake_up() -> void:
+	smoothing_speed = gameplay_speed

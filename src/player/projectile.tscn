@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bl6n2yj8bx6r3"]
+[gd_scene load_steps=12 format=3 uid="uid://bl6n2yj8bx6r3"]
 
-[ext_resource type="Script" uid="uid://oafyc88l3lxc" path="res://src/player/charge_ball.gd" id="1_86eeu"]
+[ext_resource type="Script" uid="uid://oafyc88l3lxc" path="res://src/player/weapon/charge_ball.gd" id="1_86eeu"]
 
 [sub_resource type="Curve" id="Curve_l80tk"]
 _limits = [0.0, 5.0, 0.0, 1.0]
@@ -31,12 +31,21 @@ height = 0.2
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q2d1y"]
 gravity = Vector3(0, 0, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsvex"]
+emission_enabled = true
+emission = Color(1, 0.611765, 0, 1)
+emission_energy_multiplier = 16.0
+
 [sub_resource type="SphereMesh" id="SphereMesh_fcumj"]
+material = SubResource("StandardMaterial3D_nsvex")
 radial_segments = 4
 rings = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xk4xt"]
 radius = 0.1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_86eeu"]
+radius = 0.3
 
 [node name="Projectile" type="RigidBody3D"]
 collision_layer = 4
@@ -69,4 +78,12 @@ wait_time = 6.0
 one_shot = true
 autostart = true
 
+[node name="AlienCollision" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AlienCollision"]
+shape = SubResource("SphereShape3D_86eeu")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="AlienCollision" to="." method="_on_alien_collision_body_entered"]

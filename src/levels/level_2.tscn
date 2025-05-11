@@ -1,0 +1,283 @@
+[gd_scene load_steps=28 format=3 uid="uid://dv7he4xoyccyx"]
+
+[ext_resource type="Script" uid="uid://bcot0vqyd13tp" path="res://src/levels/level_1.gd" id="1_ml2o2"]
+[ext_resource type="Material" uid="uid://cle16r2v5m6bx" path="res://src/planet/material_planet.tres" id="2_2jbrd"]
+[ext_resource type="PackedScene" uid="uid://cmvwywpkoebi0" path="res://src/platform/platform.tscn" id="3_hs3jm"]
+[ext_resource type="PackedScene" uid="uid://cqa4ocxckglvo" path="res://src/ui/ingame/in_popup.tscn" id="4_1kkqt"]
+[ext_resource type="PackedScene" uid="uid://cjjvxgn2axgb2" path="res://src/player/player.tscn" id="5_l8eot"]
+[ext_resource type="Script" uid="uid://bku06nnwpk2hw" path="res://src/player/camera.gd" id="6_7g6o4"]
+[ext_resource type="PackedScene" uid="uid://ngj6kjmcs6py" path="res://src/planet/face.tscn" id="7_uxcgt"]
+[ext_resource type="PackedScene" uid="uid://byodlr5imq2j7" path="res://src/alien/alien.tscn" id="8_7gubv"]
+[ext_resource type="PackedScene" uid="uid://c575d2sfnlfl8" path="res://src/drops/dew_drop.tscn" id="9_w2s1y"]
+
+[sub_resource type="Animation" id="Animation_frwdw"]
+resource_name = "start_level"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/PlayerStateChart")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"jump"],
+"method": &"send_event"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"wake_up"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.56667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"set_process_input"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q2d1y"]
+_data = {
+&"start_level": SubResource("Animation_frwdw")
+}
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7jktm"]
+sky_top_color = Color(0.0156863, 0.101961, 0.176471, 1)
+sky_horizon_color = Color(0.0784314, 0.0745098, 0.254902, 1)
+sky_curve = 0.0337969
+ground_bottom_color = Color(0.0156863, 0.101961, 0.176471, 1)
+ground_horizon_color = Color(0.0784314, 0.0745098, 0.254902, 1)
+ground_curve = 0.101965
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_7jktm")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_sky_contribution = 0.2
+tonemap_mode = 3
+tonemap_exposure = 0.5
+ssao_enabled = true
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.1
+glow_blend_mode = 0
+volumetric_fog_density = 0.1
+
+[sub_resource type="ZN_FastNoiseLite" id="ZN_FastNoiseLite_7jktm"]
+period = 2.0001
+fractal_type = 3
+fractal_gain = 0.0
+fractal_ping_pong_strength = 0.2
+
+[sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_7dm0k"]
+graph_data = {
+"connections": [[9, 0, 4, 0], [8, 0, 9, 0], [7, 0, 8, 0], [6, 0, 9, 1], [3, 0, 6, 2], [3, 0, 7, 2], [2, 0, 6, 1], [2, 0, 7, 1], [1, 0, 6, 0], [1, 0, 7, 0]],
+"nodes": {
+"1": {
+"gui_position": Vector2(400, -80),
+"type": "InputX"
+},
+"2": {
+"gui_position": Vector2(400, 96),
+"type": "InputY"
+},
+"3": {
+"gui_position": Vector2(400, 16),
+"type": "InputZ"
+},
+"4": {
+"auto_connect": true,
+"gui_position": Vector2(1600, 16),
+"type": "OutputSDF"
+},
+"6": {
+"auto_connect": true,
+"gui_position": Vector2(816, 0),
+"radius": 5.0,
+"type": "SdfSphere"
+},
+"7": {
+"auto_connect": true,
+"gui_position": Vector2(816, -160),
+"noise": SubResource("ZN_FastNoiseLite_7jktm"),
+"type": "FastNoise3D"
+},
+"8": {
+"b": -0.5,
+"gui_position": Vector2(992, -160),
+"type": "Multiply"
+},
+"9": {
+"gui_position": Vector2(1248, -128),
+"type": "Add"
+}
+},
+"version": 2
+}
+
+[sub_resource type="VoxelMesherTransvoxel" id="VoxelMesherTransvoxel_ig7tw"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xk4xt"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7jktm"]
+emission_enabled = true
+emission = Color(0.849255, 0.904903, 0.998919, 1)
+emission_energy_multiplier = 4.0
+emission_on_uv2 = true
+grow = true
+
+[sub_resource type="Curve" id="Curve_iygna"]
+_data = [Vector2(0, 0), 0.0, 6.20225, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0561798), -5.56613, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_l80tk"]
+curve = SubResource("Curve_iygna")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fc0e3"]
+emission_shape = 2
+emission_sphere_radius = 10.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 0.0999978
+tangential_accel_max = 5.0
+scale_curve = SubResource("CurveTexture_l80tk")
+
+[sub_resource type="SphereMesh" id="SphereMesh_7jktm"]
+radius = 0.25
+height = 0.5
+radial_segments = 4
+rings = 1
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iygna"]
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iygna"]
+radius = 4.61368
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_l80tk"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_q2d1y"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_ml2o2")
+
+[node name="AnimationPlayerLevel" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_q2d1y")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0xm2m")
+
+[node name="Planet" type="VoxelLodTerrain" parent="."]
+generator = SubResource("VoxelGeneratorGraph_7dm0k")
+mesher = SubResource("VoxelMesherTransvoxel_ig7tw")
+gi_mode = 1
+material = ExtResource("2_2jbrd")
+collision_layer = 2
+collision_mask = 0
+mesh_block_size = 32
+
+[node name="Platform" parent="." instance=ExtResource("3_hs3jm")]
+
+[node name="InPopup" parent="Platform" instance=ExtResource("4_1kkqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.609123, 6.29826, -0.748749)
+texture = SubResource("ViewportTexture_xk4xt")
+
+[node name="Label" parent="Platform/InPopup/SubViewport/Control" index="0"]
+text = "jump: [wave amp=25.0 freq=5.0 connected=1]SPACE[/wave]
+move: [rainbow freq=0.5 sat=1.0 val=1.0 speed=0.5]WASD[/rainbow]
+drop item: B"
+fit_content = true
+
+[node name="Player" parent="." instance=ExtResource("5_l8eot")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60688, 6.38393, 1.96499)
+collision_layer = 7
+collision_mask = 3
+
+[node name="StarsParticles" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_7jktm")
+cast_shadow = 0
+amount = 64
+lifetime = 10.0
+visibility_aabb = AABB(-500, -500, -500, 1000, 1000, 1000)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_fc0e3")
+draw_pass_1 = SubResource("SphereMesh_7jktm")
+
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("target")]
+transform = Transform3D(-0.901953, 0, 0.431834, 0, 1, 0, -0.431834, 0, -0.901953, 20.2922, 8.34931, -10.595)
+fov = 90.0
+far = 100.0
+script = ExtResource("6_7g6o4")
+target = NodePath("../Player")
+offset = Vector3(0, 4, 2)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_iygna")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_iygna")
+
+[node name="Face" parent="." instance=ExtResource("7_uxcgt")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.87333e-08, 4.20401)
+
+[node name="Alien" parent="." instance=ExtResource("8_7gubv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.43863, 0, 0)
+
+[node name="InPopup" parent="Alien" instance=ExtResource("4_1kkqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.986679, 0.8704, 0)
+texture = SubResource("ViewportTexture_l80tk")
+
+[node name="Label" parent="Alien/InPopup/SubViewport/Control" index="0"]
+text = "shoot: [pulse freq=1.0 color=#c9232760 ease=-2.0]Q[/pulse]"
+
+[node name="DewDrop" parent="." instance=ExtResource("9_w2s1y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92052, 4.70959)
+
+[node name="InPopup" parent="DewDrop" instance=ExtResource("4_1kkqt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177597, 0.678093, 0.572556)
+texture = SubResource("ViewportTexture_q2d1y")
+
+[node name="Label" parent="DewDrop/InPopup/SubViewport/Control" index="0"]
+text = "dewdrop"
+
+[editable path="Platform"]
+[editable path="Platform/InPopup"]
+[editable path="Player"]
+[editable path="Face"]
+[editable path="Face/InPopup"]
+[editable path="Alien"]
+[editable path="Alien/InPopup"]
+[editable path="DewDrop"]
+[editable path="DewDrop/InPopup"]

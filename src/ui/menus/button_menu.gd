@@ -5,9 +5,8 @@ func _ready() -> void:
 	mouse_entered.connect(on_button_hovered)
 	
 func on_button_pressed():
-	UI.sfx_player.queue("button_clicked")
+	UI.sfx_player.play("button_clicked")
 	UI.ButtonPressed.emit(name)
-	
 
 func on_button_hovered():
 	UI.sfx_player.play("button_hovered")

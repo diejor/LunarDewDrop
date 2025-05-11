@@ -17,16 +17,10 @@ var _planet_up: Vector3
 var _input_dir = Vector2(0., 1.)
 
 func _ready() -> void:
+	
+	# WAIT FOR LEVEL TO START
 	set_process_input(false)
-	UI.ButtonPressed.connect(on_ui_button_up)
 	_sprite_animations.play("idle_down")
-	
-	
-func on_ui_button_up(button_name: StringName):
-	if button_name == "Play":
-		set_process_input(true)
-		_animation_player.queue("idle_up")
-		_state_chart.send_event("jump")
 
 func is_grounded() -> bool:
 	return (is_on_floor() or _is_grounded_check.is_colliding())
@@ -56,13 +50,15 @@ func _physics_process(delta: float) -> void:
 		_animation_tree.set("parameters/conditions/is_idle", input_dir.y == 0.0)
 		if input_dir.y != 0:
 			_animation_tree.set("parameters/Idle/blend_position", -input_dir.y)
+			_animation_tree.set("parameters/Walk/blend_position", -input_dir.y)
 			_input_dir = input_dir
 			_state_chart.send_event("walk")
 		else:
 			_state_chart.send_event("idle")
+			
 		
-		if _animation_tree.get("parameters/Idle/blend_position") != 0:
-			input_dir.x = sign(_animation_tree.get("parameters/Idle/blend_position")) * input_dir.x
+		if _input_dir.y != 0:
+			input_dir.x = -sign(_input_dir.y) * input_dir.x
 		
 	
 	# (A) Rotate around _planet_up if the user is pressing left or right.
@@ -106,15 +102,15 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 		_state_chart.send_event("jump_finished")
 
 func _on_jumping_state_entered() -> void:
-	_animation_player.queue("jump")
+	_animation_player.play("jump")
 	
 	
 
-func _on_check_jump_grounded_state_physics_processing(delta: float) -> void:
+func _on_check_jump_grounded_state_physics_processing(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_grounded() and is_processing_input():
 		_state_chart.send_event("jump")
 
-func _on_grounded_state_physics_processing(delta: float) -> void:
+func _on_grounded_state_physics_processing(_delta: float) -> void:
 	# Apply planet gravity (if not on the floor).
 	# floor meaning that is sticking to the ground, since grounded allows to be slightly above ground
 	if not is_on_floor():
@@ -126,6 +122,6 @@ func _on_airbone_state_physics_processing(delta: float) -> void:
 	else:
 		_state_chart.send_event("grounded")
 
-func _on_coyote_time_state_physics_processing(delta: float) -> void:
+func _on_coyote_time_state_physics_processing(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		_state_chart.send_event("jump")
