@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://2ncdnl1mq64u"]
 
 [ext_resource type="Script" uid="uid://cn62r2n3n1khk" path="res://src/ui/menus/main_menu/main_menu.gd" id="1_hjh2c"]
-[ext_resource type="Theme" uid="uid://b46mwhxm8j7cu" path="res://src/ui/theme.tres" id="1_sl1te"]
 [ext_resource type="PackedScene" uid="uid://cabps4fn5kekx" path="res://src/ui/menus/button_menu.tscn" id="2_h1kbi"]
+[ext_resource type="Texture2D" uid="uid://de5geu7l0rpq0" path="res://assets/sprites/titleBlue.png" id="2_hjh2c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjh2c"]
 content_margin_left = 64.0
@@ -39,28 +39,24 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="ContentPanel/Content"]
+[node name="TextureRect" type="TextureRect" parent="ContentPanel/Content"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 0
-theme = ExtResource("1_sl1te")
-theme_type_variation = &"HeaderLarge"
-theme_override_colors/font_color = Color(0.485589, 0.653046, 1, 1)
-theme_override_colors/font_shadow_color = Color(0.584194, 0.744742, 1, 1)
-theme_override_font_sizes/font_size = 126
-text = "Lunar Dew Drop"
-horizontal_alignment = 1
-vertical_alignment = 1
+size_flags_vertical = 3
+texture = ExtResource("2_hjh2c")
+expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="ContentPanel/Content"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 theme_override_constants/margin_left = 32
 
 [node name="Actions" type="VBoxContainer" parent="ContentPanel/Content/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 5
 
 [node name="Play" parent="ContentPanel/Content/MarginContainer/Actions" instance=ExtResource("2_h1kbi")]
 layout_mode = 2
@@ -68,6 +64,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="Settings" parent="ContentPanel/Content/MarginContainer/Actions" instance=ExtResource("2_h1kbi")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1
@@ -75,6 +72,7 @@ text = "Settings
 "
 
 [node name="Credits" parent="ContentPanel/Content/MarginContainer/Actions" instance=ExtResource("2_h1kbi")]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 1

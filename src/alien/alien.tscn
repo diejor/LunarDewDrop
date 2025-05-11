@@ -1,40 +1,139 @@
-[gd_scene load_steps=8 format=3 uid="uid://byodlr5imq2j7"]
+[gd_scene load_steps=30 format=3 uid="uid://byodlr5imq2j7"]
 
 [ext_resource type="Script" uid="uid://dyowq713u4x7w" path="res://src/alien/alien_controller.gd" id="1_jgonn"]
-[ext_resource type="Texture2D" uid="uid://dvdmf468o57e2" path="res://src/alien/animations/poses.png" id="2_7fsto"]
-[ext_resource type="Script" uid="uid://bjgwucpkgl7fb" path="res://src/alien/align_sprite_view.gd" id="3_7fsto"]
+[ext_resource type="SpriteFrames" uid="uid://bwv2nrtiltuwt" path="res://src/alien/animations/alien_animated_spires.tres" id="2_7fsto"]
+[ext_resource type="Script" uid="uid://ccg70ser3cw42" path="res://src/alien/handle_hit.gd" id="2_kkbs0"]
+[ext_resource type="AnimationLibrary" uid="uid://da0j8bmc5gk03" path="res://src/alien/animations/alien_animation_library.tres" id="2_t3cif"]
+[ext_resource type="Script" uid="uid://bjgwucpkgl7fb" path="res://src/alien/align_sprite_view.gd" id="4_h6x72"]
+[ext_resource type="Script" uid="uid://bpnnmbbgsy1ra" path="res://addons/godot_state_charts/state_chart.gd" id="4_p2em0"]
+[ext_resource type="Script" uid="uid://d2frwrtcar1ga" path="res://addons/godot_state_charts/compound_state.gd" id="5_t3cif"]
+[ext_resource type="Script" uid="uid://dievtw4ea6dt4" path="res://addons/godot_state_charts/atomic_state.gd" id="6_h6x72"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iygna"]
 radius = 0.25
 height = 1.0
 
-[sub_resource type="Animation" id="Animation_jsn5t"]
-resource_name = "left_up"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t3cif"]
+animation = &"idle_left"
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ucyvu"]
-_data = {
-&"left_up": SubResource("Animation_jsn5t")
-}
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h6x72"]
+animation = &"idle_down"
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgonn"]
-atlas = ExtResource("2_7fsto")
-region = Rect2(296, 0, 148, 296)
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kkbs0"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x18b3"]
+animation = &"idle_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5h3wk"]
+animation = &"idle_down_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8mnyt"]
+animation = &"idle_down_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ij0kk"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qnk3p"]
+animation = &"idle_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kkbs0"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_t3cif")
+blend_point_0/pos = Vector2(-0.9, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_h6x72")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kkbs0")
+blend_point_2/pos = Vector2(0, 0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_x18b3")
+blend_point_3/pos = Vector2(0.9, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_5h3wk")
+blend_point_4/pos = Vector2(-0.4, -0.5)
+blend_point_5/node = SubResource("AnimationNodeAnimation_8mnyt")
+blend_point_5/pos = Vector2(0.4, -0.5)
+blend_point_6/node = SubResource("AnimationNodeAnimation_ij0kk")
+blend_point_6/pos = Vector2(0.4, 0.5)
+blend_point_7/node = SubResource("AnimationNodeAnimation_qnk3p")
+blend_point_7/pos = Vector2(-0.4, 0.5)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4ld2f"]
+animation = &"walk_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4doch"]
+animation = &"walk_down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qe0bx"]
+animation = &"walk_right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k8hqv"]
+animation = &"walk_down_righ"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lna5p"]
+animation = &"walk_down_left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g3kyd"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wqsd7"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q4a3e"]
+animation = &"walk_up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_3j21v"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_4ld2f")
+blend_point_0/pos = Vector2(-0.9, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_4doch")
+blend_point_1/pos = Vector2(0, -0.9)
+blend_point_2/node = SubResource("AnimationNodeAnimation_qe0bx")
+blend_point_2/pos = Vector2(0.9, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_k8hqv")
+blend_point_3/pos = Vector2(0.4, -0.5)
+blend_point_4/node = SubResource("AnimationNodeAnimation_lna5p")
+blend_point_4/pos = Vector2(-0.4, -0.5)
+blend_point_5/node = SubResource("AnimationNodeAnimation_g3kyd")
+blend_point_5/pos = Vector2(0, 0.9)
+blend_point_6/node = SubResource("AnimationNodeAnimation_wqsd7")
+blend_point_6/pos = Vector2(-0.4, 0.5)
+blend_point_7/node = SubResource("AnimationNodeAnimation_q4a3e")
+blend_point_7/pos = Vector2(0.4, 0.5)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t3cif"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_x18b3"]
+states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kkbs0")
+states/Idle/position = Vector2(372, 29)
+states/Walk/node = SubResource("AnimationNodeBlendSpace2D_3j21v")
+states/Walk/position = Vector2(372, 172)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_t3cif")]
 
 [node name="Alien" type="CharacterBody3D"]
+collision_layer = 8
 collision_mask = 2
 script = ExtResource("1_jgonn")
 sensor_paths = Array[NodePath]([NodePath("Perceptron/RayCast3D"), NodePath("Perceptron/RayCast3D2"), NodePath("Perceptron/RayCast3D3"), NodePath("Perceptron/RayCast3D4"), NodePath("Perceptron/RayCast3D5"), NodePath("Perceptron/RayCast3D6"), NodePath("Perceptron/RayCast3D7"), NodePath("Perceptron/RayCast3D8"), NodePath("Perceptron/RayCast3D9"), NodePath("Perceptron/RayCast3D10"), NodePath("Perceptron/RayCast3D11")])
+
+[node name="HandleHit" type="Node" parent="."]
+script = ExtResource("2_kkbs0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_iygna")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_ucyvu")
+&"": ExtResource("2_t3cif")
 }
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_x18b3")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Idle/blend_position = Vector2(-0.872629, 0.352381)
+parameters/Walk/blend_position = Vector2(-0.509485, -0.83691)
+
 [node name="Perceptron" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.965925, 0.258819, 0, -0.258819, 0.965925, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Perceptron"]
 transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0)
@@ -91,9 +190,40 @@ transform = Transform3D(0.996194, 0, -0.0871557, 0, 1, 0, 0.0871557, 0, 0.996194
 target_position = Vector3(0, 0, -5)
 debug_shape_thickness = 5
 
-[node name="Visuals" type="Node3D" parent="."]
+[node name="RayCast3D12" type="RayCast3D" parent="Perceptron"]
+transform = Transform3D(-4.37114e-08, 0, 0.999999, 0, 1, 0, -0.999999, 0, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, 0, -5)
+debug_shape_thickness = 5
 
-[node name="Sprite3D" type="Sprite3D" parent="Visuals"]
-pixel_size = 0.003
-texture = SubResource("AtlasTexture_jgonn")
-script = ExtResource("3_7fsto")
+[node name="AlienAnimatedSprites" type="AnimatedSprite3D" parent="."]
+pixel_size = 0.001
+sprite_frames = ExtResource("2_7fsto")
+animation = &"idle_down_right"
+autoplay = "idle_down"
+script = ExtResource("4_h6x72")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.447454, 0.32798, 0.315046)
+autoplay = true
+max_distance = 10.0
+bus = &"SFX"
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.714136, 0)
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("4_p2em0")
+metadata/_custom_type_script = "uid://bpnnmbbgsy1ra"
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("5_t3cif")
+initial_state = NodePath("Running")
+metadata/_custom_type_script = "uid://d2frwrtcar1ga"
+
+[node name="Running" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_h6x72")
+metadata/_custom_type_script = "uid://dievtw4ea6dt4"
+
+[node name="Scared" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_h6x72")
+metadata/_custom_type_script = "uid://dievtw4ea6dt4"

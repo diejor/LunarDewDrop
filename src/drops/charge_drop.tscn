@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://mlql0ptiv6ms"]
+
+[ext_resource type="Script" uid="uid://d3k3pyi0allkk" path="res://src/planet/planetary_body.gd" id="1_0cqqb"]
+[ext_resource type="Texture2D" uid="uid://d2ciyc0r088ij" path="res://assets/sprites/weaponCharge.png" id="2_0cqqb"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_frwdw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fcumj"]
+
+[node name="ChargeDrop" type="RigidBody3D"]
+collision_layer = 16
+collision_mask = 4
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_frwdw")
+angular_damp_mode = 1
+script = ExtResource("1_0cqqb")
+gravity_strength = 5.0
+type = "charge"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_fcumj")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.002
+billboard = 1
+texture = ExtResource("2_0cqqb")

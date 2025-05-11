@@ -1,0 +1,156 @@
+[gd_scene load_steps=18 format=3 uid="uid://ngj6kjmcs6py"]
+
+[ext_resource type="Texture2D" uid="uid://eurqaxhh1pfx" path="res://assets/anim/anim_moon_close/anim_moon_close_0002.png" id="1_n64fa"]
+[ext_resource type="Texture2D" uid="uid://dao8eb2hxmreq" path="res://assets/anim/anim_moon_open/anim_moon_open_0000.png" id="2_0bkqk"]
+[ext_resource type="Script" uid="uid://d05hrg5okl4ag" path="res://src/planet/face.gd" id="3_0bkqk"]
+[ext_resource type="Texture2D" uid="uid://t22xxb2c4hm5" path="res://assets/anim/anim_moon_open/anim_moon_open_0001.png" id="3_tl4w1"]
+[ext_resource type="Texture2D" uid="uid://bprpetc4x2ls4" path="res://assets/anim/anim_moon_open/anim_moon_open_0002.png" id="4_i56t4"]
+[ext_resource type="Texture2D" uid="uid://cd0uujgdftxkt" path="res://assets/anim/anim_moon_close/anim_moon_close_0000.png" id="5_ej6ql"]
+[ext_resource type="Texture2D" uid="uid://djw8l0y1nssjx" path="res://assets/anim/anim_moon_close/anim_moon_close_0001.png" id="6_ytphg"]
+[ext_resource type="PackedScene" uid="uid://cqa4ocxckglvo" path="res://src/ui/ingame/in_popup.tscn" id="7_jh3mc"]
+
+[sub_resource type="Animation" id="Animation_fcumj"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_riplu"]
+resource_name = "close_mouth"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_albedo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("5_ej6ql"), ExtResource("6_ytphg"), ExtResource("1_n64fa")]
+}
+
+[sub_resource type="Animation" id="Animation_q2d1y"]
+resource_name = "open_mouth"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture_albedo")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333, 0.0666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_0bkqk"), ExtResource("3_tl4w1"), ExtResource("4_i56t4")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcumj"]
+_data = {
+&"RESET": SubResource("Animation_fcumj"),
+&"close_mouth": SubResource("Animation_riplu"),
+&"open_mouth": SubResource("Animation_q2d1y")
+}
+
+[sub_resource type="Animation" id="Animation_tl4w1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InPopup/SubViewport/Control/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3x LEFT"]
+}
+
+[sub_resource type="Animation" id="Animation_0bkqk"]
+resource_name = "loop_text"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("InPopup/SubViewport/Control/Label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["DEWDROPS!"]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_remaining_text"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tl4w1"]
+_data = {
+&"RESET": SubResource("Animation_tl4w1"),
+&"loop_text": SubResource("Animation_0bkqk")
+}
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_iygna"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n64fa"]
+radius = 2.5
+
+[node name="Face" type="Decal"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+size = Vector3(4, 0.895996, 1)
+texture_albedo = ExtResource("2_0bkqk")
+texture_normal = ExtResource("1_n64fa")
+upper_fade = 2.87323e-05
+lower_fade = 1e-05
+script = ExtResource("3_0bkqk")
+
+[node name="AnimationPlayerMoon" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_fcumj")
+}
+
+[node name="AnimationPlayerText" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tl4w1")
+}
+
+[node name="InPopup" parent="." instance=ExtResource("7_jh3mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06031, -1.53075, -0.643102)
+texture = SubResource("ViewportTexture_iygna")
+
+[node name="Label" parent="InPopup/SubViewport/Control" index="0"]
+text = "3x LEFT"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_n64fa")
+
+[node name="Items" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Items"]
+shape = SubResource("SphereShape3D_n64fa")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="Items" to="." method="_on_items_body_entered"]
+
+[editable path="InPopup"]
