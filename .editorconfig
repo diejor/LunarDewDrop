@@ -1,4 +1,85 @@
 root = true
+# Normalize EOL for all files that Git considers text files.
+* text=auto eol=lf
+
+# Except for Windows-only / Visual Studio files
+*.bat eol=crlf
+*.sln eol=crlf
+*.csproj eol=crlf
+misc/msvs/* eol=crlf
+
+# The above only works properly for Git 2.10+, so for older versions
+# we need to manually list the binary files we don't want modified.
+*.icns binary
+*.ico binary
+*.jar binary
+*.png binary
+*.ttf binary
+*.tza binary
+
+# Audio files
+*.wav     binary
+*.mp3     binary
+*.ogg     binary
+*.opus    binary
+*.flac    binary
+
+# Video files
+*.avi     binary
+*.mp4     binary
+*.mkv     binary
+*.mov     binary
+
+# Image files
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.bmp     binary
+*.tiff    binary
+*.webp    binary
+*.svg     binary
+*.raw     binary
+*.exr     binary
+*.hdr     binary
+*.tga     binary
+*.dng     binary
+*.cr2     binary
+*.nef     binary
+*.orf     binary
+*.raf     binary
+*.arw     binary
+*.rw2     binary
+*.3fr     binary
+
+# 3D model files
+*.fbx     binary
+*.obj     binary
+*.blend   binary
+*.gltf    binary
+*.glb     binary
+*.stl     binary
+*.dae     binary
+*.ply     binary
+*.3ds     binary
+*.max     binary
+
+# Archive files
+*.zip     binary
+*.tar     binary
+*.gz      binary
+*.bz2     binary
+*.xz      binary
+*.7z      binary
+*.rar     binary
+*.tar.gz  binary
+*.jar     binary
+
+# Native libraries
+*.so      binary
+*.dll     binary
+*.dylib   binary
+*.framework binary
 
 [*]
 charset = utf-8
