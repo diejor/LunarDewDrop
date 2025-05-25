@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:49ecf2f0c29c970fec0160d2e9757eb2c552a49e057e3488b7bedf6c81cd3749
-size 911
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://q4gwr2y8iiwy"
+path.s3tc="res://.godot/imported/anim_alien_walk_backward_0001.png-d76df8b199772e3278620e1b2a6637c7.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/anim/alien/anim_alien_walk_backward/anim_alien_walk_backward_0001.png"
+dest_files=["res://.godot/imported/anim_alien_walk_backward_0001.png-d76df8b199772e3278620e1b2a6637c7.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

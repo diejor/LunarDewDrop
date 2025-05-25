@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e941fb984379602f449c7d6cf329e6e8c635803721b250e9583763a2425dc784
-size 365
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bqfg5trux6ilh"
+path="res://.godot/imported/ending.mp3-8bdf6428afa198962f706d76166df047.mp3str"
+
+[deps]
+
+source_file="res://assets/soundtrack/ending.mp3"
+dest_files=["res://.godot/imported/ending.mp3-8bdf6428afa198962f706d76166df047.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

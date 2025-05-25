@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:30a17b182e69ddaf737958467b77aa771ad8086194beacdfc9d1e15510bae943
-size 496
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dowvdm7pqw8co"
+path="res://.godot/imported/pick_drop.wav-cde2688306c26785a7ed5e302f9ec178.sample"
+
+[deps]
+
+source_file="res://assets/sfx/pick_drop.wav"
+dest_files=["res://.godot/imported/pick_drop.wav-cde2688306c26785a7ed5e302f9ec178.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

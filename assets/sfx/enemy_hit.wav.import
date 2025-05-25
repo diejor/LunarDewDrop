@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:96beb6b0478ca8f36b8141abdaa01ef22bf6b54d98e5a56469630fedce2cc7eb
-size 496
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://befb6akn7ncrd"
+path="res://.godot/imported/enemy_hit.wav-0f62d7fb3837f57a1604341aa84ef3fc.sample"
+
+[deps]
+
+source_file="res://assets/sfx/enemy_hit.wav"
+dest_files=["res://.godot/imported/enemy_hit.wav-0f62d7fb3837f57a1604341aa84ef3fc.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

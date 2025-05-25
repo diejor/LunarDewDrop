@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:521ac602a9276c0c6c8018820cd3ac21c090b274bca3224947945b062fca15d8
-size 486
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://jfsf417ahgbo"
+path="res://.godot/imported/reward.wav-728c20b49cf1489d3f83187b1b7354c7.sample"
+
+[deps]
+
+source_file="res://assets/sfx/reward.wav"
+dest_files=["res://.godot/imported/reward.wav-728c20b49cf1489d3f83187b1b7354c7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

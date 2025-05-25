@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fb9c604f349c5437b0b54298c4a96b285fd1f7b705767f5201b46c81a35ddb05
-size 505
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcu1systql3f4"
+path="res://.godot/imported/button_click.wav-0b195e4cac219e17bd40f9d02445cbee.sample"
+
+[deps]
+
+source_file="res://assets/sfx/button_click.wav"
+dest_files=["res://.godot/imported/button_click.wav-0b195e4cac219e17bd40f9d02445cbee.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

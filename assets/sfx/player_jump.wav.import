@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e3680d3aead3aa8fe45ec435f5142cfcbc0adf4bf016e7384668cbe422fa7d92
-size 502
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cioq0phdpiefg"
+path="res://.godot/imported/player_jump.wav-e0ae1bb653b319e01782c1846a5a865d.sample"
+
+[deps]
+
+source_file="res://assets/sfx/player_jump.wav"
+dest_files=["res://.godot/imported/player_jump.wav-e0ae1bb653b319e01782c1846a5a865d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -2,18 +2,6 @@ extends CharacterBody3D
 
 @onready var handle_hit: Node = $HandleHit
 
-
-
-
-
-
-
-
-
-
-
-
-
 @export var speed: float = 126.0
 @export var turn_speed: float = 1.0
 @export var planet_center: Vector3 = Vector3(0, 0, 0)

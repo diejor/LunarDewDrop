@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3d8b0784a3ee39bfb124dd97a927e342b2d29f2be468d83ff0752e724cd25e84
-size 927
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://6n6ab5qrybmy"
+path.s3tc="res://.godot/imported/anim_alien_idle_quarterRight_0000.png-a8a91b7684c74496a60127ce323cded5.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/anim/alien/anim_alien_idle_quarterRight/anim_alien_idle_quarterRight_0000.png"
+dest_files=["res://.godot/imported/anim_alien_idle_quarterRight_0000.png-a8a91b7684c74496a60127ce323cded5.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

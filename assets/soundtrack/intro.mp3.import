@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:90dfe4b9b9a73d0a5a2ac7968ab08594a19fe89a5c86149fb1e82792a9ce4b97
-size 362
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv5a2fyeu76ce"
+path="res://.godot/imported/intro.mp3-2d341d117e9d32ce8f1e0f4991a3f601.mp3str"
+
+[deps]
+
+source_file="res://assets/soundtrack/intro.mp3"
+dest_files=["res://.godot/imported/intro.mp3-2d341d117e9d32ce8f1e0f4991a3f601.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

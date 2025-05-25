@@ -59,10 +59,26 @@ corner_radius_bottom_left = 64
 [sub_resource type="Animation" id="Animation_idipi"]
 resource_name = "RESET"
 loop_mode = 1
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Songs")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": null
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
 
 [sub_resource type="Animation" id="Animation_yo02o"]
 resource_name = "ending"
 length = 67.61
+loop_mode = 1
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -463,22 +479,23 @@ animation = &"level1_song"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1mh4k"]
 animation = &"main_theme"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l5owu"]
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t30i7"]
-xfade_time = 3.0
+switch_mode = 1
 advance_mode = 2
 advance_condition = &"is_level1"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5kva4"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ri2wq"]
-states/End/position = Vector2(902, 100)
+states/End/position = Vector2(899.6, 99.7215)
+states/Start/position = Vector2(203.2, 100)
 states/level1_song/node = SubResource("AnimationNodeAnimation_cx7gx")
-states/level1_song/position = Vector2(529.333, 100)
+states/level1_song/position = Vector2(534.933, 98.7814)
 states/main_theme/node = SubResource("AnimationNodeAnimation_1mh4k")
-states/main_theme/position = Vector2(349.333, 99.3333)
-transitions = ["Start", "main_theme", SubResource("AnimationNodeStateMachineTransition_l5owu"), "main_theme", "level1_song", SubResource("AnimationNodeStateMachineTransition_t30i7")]
-graph_offset = Vector2(266.972, 0)
+states/main_theme/position = Vector2(358.933, 198.279)
+transitions = ["main_theme", "level1_song", SubResource("AnimationNodeStateMachineTransition_t30i7"), "Start", "main_theme", SubResource("AnimationNodeStateMachineTransition_5kva4")]
+graph_offset = Vector2(182.972, 1)
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("1_u7n8c")

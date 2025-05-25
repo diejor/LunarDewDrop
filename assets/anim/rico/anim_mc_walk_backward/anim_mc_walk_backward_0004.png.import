@@ -1,3 +1,35 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:65680eeddbc37b837c8346a1ec43d29a6be58b8bc2da498a6fc1679c17ad7903
-size 899
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://co8wt38rlox2l"
+path.s3tc="res://.godot/imported/anim_mc_walk_backward_0004.png-d7630fa316da1f7afd210250a1e32527.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+
+[deps]
+
+source_file="res://assets/anim/rico/anim_mc_walk_backward/anim_mc_walk_backward_0004.png"
+dest_files=["res://.godot/imported/anim_mc_walk_backward_0004.png-d7630fa316da1f7afd210250a1e32527.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

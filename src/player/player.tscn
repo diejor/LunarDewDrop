@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cjjvxgn2axgb2"]
+[gd_scene load_steps=48 format=3 uid="uid://cjjvxgn2axgb2"]
 
 [ext_resource type="Script" uid="uid://dwg15gpe1spw3" path="res://src/player/player_controller.gd" id="1_8afob"]
 [ext_resource type="Script" uid="uid://b3pbyjq4a3yl0" path="res://src/player/weapon/weapon_component.gd" id="2_cwolq"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://brxtvtkkykaao" path="res://assets/anim/rico/anim_mc_idle_forward/anim_mc_idle_forward_0000.png" id="5_wlj80"]
 [ext_resource type="Script" uid="uid://dievtw4ea6dt4" path="res://addons/godot_state_charts/atomic_state.gd" id="5_x42xx"]
 [ext_resource type="Texture2D" uid="uid://dpxcu2alcdcg2" path="res://assets/anim/rico/anim_mc_idle_forward/anim_mc_idle_forward_0001.png" id="6_6bm8s"]
+[ext_resource type="PackedScene" uid="uid://ofrxlebbknri" path="res://src/player/shadow.tscn" id="6_e7e1q"]
 [ext_resource type="Script" uid="uid://d6qlb3u64wvs" path="res://addons/godot_state_charts/transition.gd" id="6_l271a"]
 [ext_resource type="Texture2D" uid="uid://beghfqek3pqb3" path="res://assets/anim/rico/anim_mc_idle_backward/anim_mc_idle_backward_0001.png" id="6_rl62b"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="7_o822w"]
@@ -91,15 +92,6 @@ collision_bounce = 0.5
 [sub_resource type="SphereMesh" id="SphereMesh_244u8"]
 radius = 0.1
 height = 0.2
-
-[sub_resource type="Gradient" id="Gradient_8afob"]
-offsets = PackedFloat32Array(0.445714, 0.617143, 1)
-colors = PackedColorArray(0, 0, 0, 0.721569, 0, 0, 0, 0, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dovo2"]
-gradient = SubResource("Gradient_8afob")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wlj80"]
 animations = [{
@@ -228,13 +220,8 @@ visibility_aabb = AABB(-0.565477, -0.445779, -0.573162, 1.08383, 0.973986, 1.091
 process_material = SubResource("ParticleProcessMaterial_mf2ua")
 draw_pass_1 = SubResource("SphereMesh_244u8")
 
-[node name="Shadow" type="Decal" parent="Visuals"]
+[node name="Shadow" parent="Visuals" instance=ExtResource("6_e7e1q")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.89932, 0)
-size = Vector3(1.25, 10, 1.25)
-texture_albedo = SubResource("GradientTexture2D_dovo2")
-upper_fade = 35.0555
-lower_fade = 1e-05
-distance_fade_enabled = true
 
 [node name="PlayerAnimations" type="AnimatedSprite3D" parent="Visuals"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.198141, 0)
@@ -391,8 +378,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69696, 1.92308)
 
 [connection signal="body_entered" from="PickItems" to="Inventory" method="_on_pick_items_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_check_jump_grounded_state_physics_processing"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_grounded_state_physics_processing"]
+[connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_check_jump_grounded_state_physics_processing"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="WeaponComponent" method="_on_grounded_state_physics_processing"]
 [connection signal="state_entered" from="PlayerStateChart/Root/Grounded/Shooting" to="WeaponComponent" method="_on_shooting_state_entered"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Airbone" to="." method="_on_airbone_state_physics_processing"]

@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a63ab676620711a20172bad30fb6b387d4d503b1a56908803e866fd6ca7ac5b4
-size 782
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d3ew8qgyhrtvh"
+path="res://.godot/imported/dangerRed06.png-e3ee6ab4573bafad1bfdf935936ffe90.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/dangerRed06.png"
+dest_files=["res://.godot/imported/dangerRed06.png-e3ee6ab4573bafad1bfdf935936ffe90.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

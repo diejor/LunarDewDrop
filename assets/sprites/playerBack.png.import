@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:53915e8087420029666c2991dcb6ff95a99dc3e925b6083050dcd885135fdba6
-size 778
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cbmdxh5bmwh4"
+path="res://.godot/imported/playerBack.png-2c898517816577810ba5006535c47357.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/playerBack.png"
+dest_files=["res://.godot/imported/playerBack.png-2c898517816577810ba5006535c47357.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

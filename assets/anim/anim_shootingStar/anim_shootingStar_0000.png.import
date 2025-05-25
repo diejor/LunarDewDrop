@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:edcf2fd254eeeeda91bcda743bd915cc7864c3bdacae40f91c078ac8455b0c8e
-size 830
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://by8b5vdyoar0i"
+path="res://.godot/imported/anim_shootingStar_0000.png-f770fc36f96ee4824e1378a9dad8f812.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/anim/anim_shootingStar/anim_shootingStar_0000.png"
+dest_files=["res://.godot/imported/anim_shootingStar_0000.png-f770fc36f96ee4824e1378a9dad8f812.ctex"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2c8eeb5fbc2b90342f0d6a44923980e57f90741c21f04ee77d6c359cfccbd96
-size 785
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dd1cfyresulk8"
+path="res://.godot/imported/inventoryBag.png-df90cef13fea3845ceab33c12261df65.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/sprites/inventoryBag.png"
+dest_files=["res://.godot/imported/inventoryBag.png-df90cef13fea3845ceab33c12261df65.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

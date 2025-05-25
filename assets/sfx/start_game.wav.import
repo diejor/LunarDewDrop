@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8aad0a6e51bb237f96d0ed1ffe898a6569662b6bb72796d8e072cecde06c9f87
-size 499
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dt7refnl2ei7g"
+path="res://.godot/imported/start_game.wav-5a5708032576e77afa6f444901b2d5b3.sample"
+
+[deps]
+
+source_file="res://assets/sfx/start_game.wav"
+dest_files=["res://.godot/imported/start_game.wav-5a5708032576e77afa6f444901b2d5b3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

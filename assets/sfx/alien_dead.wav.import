@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:9eaa689d77deb11daa6de8c6761f02e7671f9ff07e976278e9209fb5a45b01aa
-size 498
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://wdscujqfmwar"
+path="res://.godot/imported/alien_dead.wav-d6ef50fc85e09dced9dba86910f01e8f.sample"
+
+[deps]
+
+source_file="res://assets/sfx/alien_dead.wav"
+dest_files=["res://.godot/imported/alien_dead.wav-d6ef50fc85e09dced9dba86910f01e8f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

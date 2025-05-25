@@ -200,13 +200,13 @@ libraries = {
 environment = SubResource("Environment_0xm2m")
 
 [node name="Planet" type="VoxelLodTerrain" parent="."]
-generator = SubResource("VoxelGeneratorGraph_7dm0k")
-mesher = SubResource("VoxelMesherTransvoxel_ig7tw")
-gi_mode = 1
 material = ExtResource("1_fc0e3")
 collision_layer = 2
 collision_mask = 0
 mesh_block_size = 32
+generator = SubResource("VoxelGeneratorGraph_7dm0k")
+mesher = SubResource("VoxelMesherTransvoxel_ig7tw")
+gi_mode = 1
 
 [node name="Platform" parent="." instance=ExtResource("4_iygna")]
 
@@ -229,7 +229,7 @@ collision_mask = 3
 [node name="StarsParticles" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_7jktm")
 cast_shadow = 0
-amount = 64
+amount = 32
 lifetime = 10.0
 visibility_aabb = AABB(-500, -500, -500, 1000, 1000, 1000)
 local_coords = true

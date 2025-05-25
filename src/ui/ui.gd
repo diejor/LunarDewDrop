@@ -26,12 +26,6 @@ func _process(delta: float) -> void:
 		$Pause.visible = true
 		get_tree().paused = true
 
-func _ready() -> void:
-	songs_player.play("main_theme")
-	print(item3.texture)
-	item3.texture = null
-
-
 func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_packed(level1)

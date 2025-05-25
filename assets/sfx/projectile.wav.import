@@ -1,3 +1,24 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2abfb007d4d087c19aa0622313286c600048cae2d458164f154bffe7d43c83b9
-size 499
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://di0h0b4548fuj"
+path="res://.godot/imported/projectile.wav-1b558f15e38c58c43e76326cae40263d.sample"
+
+[deps]
+
+source_file="res://assets/sfx/projectile.wav"
+dest_files=["res://.godot/imported/projectile.wav-1b558f15e38c58c43e76326cae40263d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
