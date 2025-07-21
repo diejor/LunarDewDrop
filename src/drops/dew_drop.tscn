@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c575d2sfnlfl8"]
+[gd_scene load_steps=6 format=3 uid="uid://c575d2sfnlfl8"]
 
 [ext_resource type="Script" uid="uid://d3k3pyi0allkk" path="res://src/planet/planetary_body.gd" id="1_q0q5b"]
 [ext_resource type="Texture2D" uid="uid://ch6o6tspygb1i" path="res://assets/sprites/dewdrop.png" id="2_rj7p2"]
+[ext_resource type="PackedScene" uid="uid://ofrxlebbknri" path="res://src/player/shadow.tscn" id="3_rj7p2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_frwdw"]
 
@@ -24,3 +25,7 @@ shape = SubResource("SphereShape3D_fcumj")
 pixel_size = 0.002
 billboard = 1
 texture = ExtResource("2_rj7p2")
+
+[node name="Shadow" parent="." instance=ExtResource("3_rj7p2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41625, 0)
+size = Vector3(0.5, 10, 0.5)

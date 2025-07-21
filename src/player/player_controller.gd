@@ -93,7 +93,9 @@ func _physics_process(delta: float) -> void:
 		var rotation_axis = current_up.cross(_planet_up).normalized()
 		var rot = Basis().rotated(rotation_axis, angle_between * _vertical_correction_speed * delta)
 		transform.basis = rot * transform.basis
-
+	
+	velocity += -_planet_up * _gravity_strength * delta
+	
 	# Move and slide, passing _planet_up as the up direction.
 	move_and_slide()
 	
@@ -111,15 +113,11 @@ func _on_check_jump_grounded_state_physics_processing(_delta: float) -> void:
 		_state_chart.send_event("jump")
 
 func _on_grounded_state_physics_processing(_delta: float) -> void:
-	# Apply planet gravity (if not on the floor).
-	# floor meaning that is sticking to the ground, since grounded allows to be slightly above ground
-	if not is_on_floor():
+	if not $CheckIfGround.is_colliding():
 		_state_chart.send_event("airbone")
 
-func _on_airbone_state_physics_processing(delta: float) -> void:
-	if not is_on_floor():
-		velocity += -_planet_up * _gravity_strength * delta
-	else:
+func _on_airbone_state_physics_processing(delta: float) -> void:	
+	if $CheckIfGround.is_colliding():
 		_state_chart.send_event("grounded")
 
 func _on_coyote_time_state_physics_processing(_delta: float) -> void:

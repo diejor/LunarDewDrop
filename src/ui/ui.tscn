@@ -1,12 +1,9 @@
-[gd_scene load_steps=48 format=3 uid="uid://1mgi5w8s5qis"]
+[gd_scene load_steps=42 format=3 uid="uid://1mgi5w8s5qis"]
 
 [ext_resource type="Script" uid="uid://pfogwsgb4x42" path="res://src/ui/ui.gd" id="1_u7n8c"]
 [ext_resource type="PackedScene" uid="uid://2ncdnl1mq64u" path="res://src/ui/menus/main_menu/main_menu.tscn" id="2_f5cxw"]
-[ext_resource type="Texture2D" uid="uid://crhxdcupst2hu" path="res://assets/sprites/healthbar.png" id="3_1mh4k"]
 [ext_resource type="AudioStream" uid="uid://dcu1systql3f4" path="res://assets/sfx/button_click.wav" id="3_aac20"]
-[ext_resource type="Texture2D" uid="uid://pjyib08moymi" path="res://assets/sprites/inventory.png" id="3_j4riv"]
-[ext_resource type="Texture2D" uid="uid://dxp7uaaaua14j" path="res://assets/sprites/healthbarHeart.png" id="4_l5owu"]
-[ext_resource type="Texture2D" uid="uid://d2ciyc0r088ij" path="res://assets/sprites/weaponCharge.png" id="4_wwjrv"]
+[ext_resource type="PackedScene" uid="uid://dcn13d2cpyh72" path="res://src/ui/hud.tscn" id="3_yo02o"]
 [ext_resource type="AudioStream" uid="uid://jfsf417ahgbo" path="res://assets/sfx/reward.wav" id="7_cx7gx"]
 [ext_resource type="PackedScene" uid="uid://cabps4fn5kekx" path="res://src/ui/menus/button_menu.tscn" id="7_eofyr"]
 [ext_resource type="FontFile" uid="uid://bglu7olgc4ysk" path="res://assets/font.ttf" id="8_1kq2p"]
@@ -20,32 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://befb6akn7ncrd" path="res://assets/sfx/enemy_hit.wav" id="15_idipi"]
 [ext_resource type="AudioStream" uid="uid://dowvdm7pqw8co" path="res://assets/sfx/pick_drop.wav" id="16_6s7ef"]
 [ext_resource type="AudioStream" uid="uid://bbuxxt3jema3l" path="res://assets/sfx/player_noticed.wav" id="17_yo02o"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gucsq"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx7gx"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-bg_color = Color(1, 1, 1, 0)
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gucsq"]
-content_margin_left = 15.0
-content_margin_top = 15.0
-content_margin_right = 15.0
-content_margin_bottom = 15.0
-bg_color = Color(1, 1, 1, 0)
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 1410065408
-corner_radius_top_right = 1410065408
-corner_radius_bottom_right = 1410065408
-corner_radius_bottom_left = 1410065408
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjh2c"]
 content_margin_left = 64.0
@@ -502,146 +473,9 @@ script = ExtResource("1_u7n8c")
 
 [node name="MainMenu" parent="." instance=ExtResource("2_f5cxw")]
 
-[node name="HUD" type="Control" parent="."]
+[node name="HUD" parent="." instance=ExtResource("3_yo02o")]
 visible = false
 modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Inventory" type="PanelContainer" parent="HUD"]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -403.0
-offset_top = 44.0
-offset_right = -65.0
-offset_bottom = 177.0
-grow_horizontal = 0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_gucsq")
-
-[node name="Inventory" type="Sprite2D" parent="HUD/Inventory"]
-z_index = -1
-position = Vector2(178, 61)
-scale = Vector2(0.34, 0.34)
-texture = ExtResource("3_j4riv")
-
-[node name="HBoxStatus" type="HBoxContainer" parent="HUD/Inventory"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="HeartsMargin" type="MarginContainer" parent="HUD/Inventory/HBoxStatus"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = -15
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="HeartsPanel" type="PanelContainer" parent="HUD/Inventory/HBoxStatus/HeartsMargin"]
-z_index = -1
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_cx7gx")
-
-[node name="HBoxHearts" type="HBoxContainer" parent="HUD/Inventory/HBoxStatus/HeartsMargin/HeartsPanel"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Item1" type="TextureRect" parent="HUD/Inventory/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_wwjrv")
-expand_mode = 4
-
-[node name="Item2" type="TextureRect" parent="HUD/Inventory/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-expand_mode = 4
-
-[node name="Item3" type="TextureRect" parent="HUD/Inventory/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-expand_mode = 4
-
-[node name="PlayerPanel" type="PanelContainer" parent="HUD/Inventory/HBoxStatus"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_gucsq")
-
-[node name="Status" type="PanelContainer" parent="HUD"]
-layout_mode = 2
-offset_left = 84.0
-offset_top = 41.0
-offset_right = 422.0
-offset_bottom = 171.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_gucsq")
-
-[node name="Healthbar" type="Sprite2D" parent="HUD/Status"]
-z_index = -1
-position = Vector2(148.662, 68)
-scale = Vector2(0.330481, 0.368)
-texture = ExtResource("3_1mh4k")
-
-[node name="HBoxStatus" type="HBoxContainer" parent="HUD/Status"]
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="PlayerPanel" type="PanelContainer" parent="HUD/Status/HBoxStatus"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
-theme_override_styles/panel = SubResource("StyleBoxFlat_gucsq")
-
-[node name="HeartsMargin" type="MarginContainer" parent="HUD/Status/HBoxStatus"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = -15
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="HeartsPanel" type="PanelContainer" parent="HUD/Status/HBoxStatus/HeartsMargin"]
-z_index = -1
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_cx7gx")
-
-[node name="HBoxHearts" type="HBoxContainer" parent="HUD/Status/HBoxStatus/HeartsMargin/HeartsPanel"]
-layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="Heart3" type="TextureRect" parent="HUD/Status/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_l5owu")
-expand_mode = 4
-
-[node name="Heart2" type="TextureRect" parent="HUD/Status/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_l5owu")
-expand_mode = 4
-
-[node name="Heart1" type="TextureRect" parent="HUD/Status/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-texture = ExtResource("4_l5owu")
-expand_mode = 4
-
-[node name="ProgressBar" type="ProgressBar" parent="HUD"]
-layout_mode = 0
-offset_right = 4.0
-offset_bottom = 27.0
 
 [node name="Pause" type="Control" parent="."]
 process_mode = 3

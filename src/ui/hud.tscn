@@ -1,0 +1,179 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcn13d2cpyh72"]
+
+[ext_resource type="Texture2D" uid="uid://pjyib08moymi" path="res://assets/sprites/inventory.png" id="1_i4jpw"]
+[ext_resource type="Script" uid="uid://ljp78vie60vq" path="res://src/ui/hud.gd" id="1_r2cn7"]
+[ext_resource type="Script" uid="uid://bbg2gbv21jjxp" path="res://src/player/items_keeper.gd" id="2_0isw4"]
+[ext_resource type="Texture2D" uid="uid://d2ciyc0r088ij" path="res://assets/sprites/weaponCharge.png" id="2_r2cn7"]
+[ext_resource type="Texture2D" uid="uid://crhxdcupst2hu" path="res://assets/sprites/healthbar.png" id="3_0isw4"]
+[ext_resource type="Texture2D" uid="uid://dxp7uaaaua14j" path="res://assets/sprites/healthbarHeart.png" id="4_vbpn1"]
+
+[sub_resource type="Resource" id="Resource_vbpn1"]
+script = ExtResource("2_0isw4")
+item_1 = ExtResource("4_vbpn1")
+item_2 = ExtResource("4_vbpn1")
+item_3 = ExtResource("4_vbpn1")
+metadata/_custom_type_script = "uid://bbg2gbv21jjxp"
+
+[sub_resource type="Resource" id="Resource_0isw4"]
+script = ExtResource("2_0isw4")
+item_1 = ExtResource("2_r2cn7")
+metadata/_custom_type_script = "uid://bbg2gbv21jjxp"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gucsq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cx7gx"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gucsq"]
+content_margin_left = 15.0
+content_margin_top = 15.0
+content_margin_right = 15.0
+content_margin_bottom = 15.0
+bg_color = Color(1, 1, 1, 0)
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 1410065408
+corner_radius_top_right = 1410065408
+corner_radius_bottom_right = 1410065408
+corner_radius_bottom_left = 1410065408
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[node name="HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r2cn7")
+status = SubResource("Resource_vbpn1")
+inventory = SubResource("Resource_0isw4")
+
+[node name="Inventory" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -403.0
+offset_top = 44.0
+offset_right = -65.0
+offset_bottom = 177.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gucsq")
+
+[node name="Inventory" type="Sprite2D" parent="Inventory"]
+z_index = -1
+position = Vector2(178, 61)
+scale = Vector2(0.34, 0.34)
+texture = ExtResource("1_i4jpw")
+
+[node name="HBoxStatus" type="HBoxContainer" parent="Inventory"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="HeartsMargin" type="MarginContainer" parent="Inventory/HBoxStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HeartsPanel" type="PanelContainer" parent="Inventory/HBoxStatus/HeartsMargin"]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cx7gx")
+
+[node name="HBoxHearts" type="HBoxContainer" parent="Inventory/HBoxStatus/HeartsMargin/HeartsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Item1" type="TextureRect" parent="Inventory/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
+
+[node name="Item2" type="TextureRect" parent="Inventory/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
+
+[node name="Item3" type="TextureRect" parent="Inventory/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
+
+[node name="PlayerPanel" type="PanelContainer" parent="Inventory/HBoxStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_gucsq")
+
+[node name="Status" type="PanelContainer" parent="."]
+layout_mode = 2
+offset_left = 84.0
+offset_top = 41.0
+offset_right = 422.0
+offset_bottom = 171.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gucsq")
+
+[node name="Healthbar" type="Sprite2D" parent="Status"]
+z_index = -1
+position = Vector2(148.662, 68)
+scale = Vector2(0.330481, 0.368)
+texture = ExtResource("3_0isw4")
+
+[node name="HBoxStatus" type="HBoxContainer" parent="Status"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="PlayerPanel" type="PanelContainer" parent="Status/HBoxStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+theme_override_styles/panel = SubResource("StyleBoxFlat_gucsq")
+
+[node name="HeartsMargin" type="MarginContainer" parent="Status/HBoxStatus"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = -15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HeartsPanel" type="PanelContainer" parent="Status/HBoxStatus/HeartsMargin"]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cx7gx")
+
+[node name="HBoxHearts" type="HBoxContainer" parent="Status/HBoxStatus/HeartsMargin/HeartsPanel"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Heart1" type="TextureRect" parent="Status/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
+
+[node name="Heart2" type="TextureRect" parent="Status/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
+
+[node name="Heart3" type="TextureRect" parent="Status/HBoxStatus/HeartsMargin/HeartsPanel/HBoxHearts"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+expand_mode = 4
