@@ -70,7 +70,7 @@ func _physics_process(delta: float) -> void:
 		var basis_rot = Basis().rotated(_planet_up, angle)
 		transform.basis = basis_rot * transform.basis
 	
-	# (B) Move forward/backward. 
+	# (B) Move forward/backward.
 	#     The "forward" direction in Godot 3D is typically -transform.basis.z, but adjust if needed.
 	var forward_dir = -transform.basis.z
 	# Flatten 'forward_dir' onto the tangent plane in case the character is oriented diagonally.
@@ -82,9 +82,13 @@ func _physics_process(delta: float) -> void:
 	# Multiply by delta if you want velocity to be distance per second:
 	horizontal_velocity = forward_dir * target_h_speed * delta
 	
+	
 	# Reassemble final velocity from horizontal + vertical.
 	velocity = horizontal_velocity + vertical_velocity
-
+	
+	# Apply gravity
+	velocity += -_planet_up * _gravity_strength * delta
+	
 	# Gradually rotate the character so its Y-axis aligns with _planet_up.
 	var current_up = transform.basis.y
 	up_direction = current_up
@@ -94,9 +98,6 @@ func _physics_process(delta: float) -> void:
 		var rot = Basis().rotated(rotation_axis, angle_between * _vertical_correction_speed * delta)
 		transform.basis = rot * transform.basis
 	
-	velocity += -_planet_up * _gravity_strength * delta
-	
-	# Move and slide, passing _planet_up as the up direction.
 	move_and_slide()
 	
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
@@ -105,8 +106,6 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 
 func _on_jumping_state_entered() -> void:
 	_animation_player.play("jump")
-	
-	
 
 func _on_check_jump_grounded_state_physics_processing(_delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_grounded() and is_processing_input():

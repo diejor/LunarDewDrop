@@ -242,7 +242,7 @@ bus = &"SFX"
 
 [node name="CheckIfGround" type="RayCast3D" parent="."]
 target_position = Vector3(0, -1.25, 0)
-collision_mask = 6
+collision_mask = 7
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 5
 
@@ -253,6 +253,9 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 callback_mode_discrete = 0
+libraries = {
+&"": ExtResource("27_2rxss")
+}
 tree_root = ExtResource("28_3uvft")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_idle = false
@@ -366,6 +369,7 @@ delay_in_seconds = "0.0"
 script = ExtResource("32_8o3kr")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("33_3fw2w")]
+anchors_preset = -1
 offset_left = 621.0
 offset_top = 12.0
 offset_right = -8.0
@@ -377,8 +381,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69696, 1.92308)
 
 [connection signal="body_entered" from="PickItems" to="Inventory" method="_on_pick_items_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_grounded_state_physics_processing"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_check_jump_grounded_state_physics_processing"]
+[connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="." method="_on_grounded_state_physics_processing"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Grounded" to="WeaponComponent" method="_on_grounded_state_physics_processing"]
 [connection signal="state_entered" from="PlayerStateChart/Root/Grounded/Shooting" to="WeaponComponent" method="_on_shooting_state_entered"]
 [connection signal="state_physics_processing" from="PlayerStateChart/Root/Airbone" to="." method="_on_airbone_state_physics_processing"]

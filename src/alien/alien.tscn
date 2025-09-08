@@ -112,7 +112,7 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Alien" type="CharacterBody3D"]
 collision_layer = 8
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_jgonn")
 sensor_paths = Array[NodePath]([NodePath("Perceptron/RayCast3D"), NodePath("Perceptron/RayCast3D3"), NodePath("Perceptron/RayCast3D4"), NodePath("Perceptron/RayCast3D6"), NodePath("Perceptron/RayCast3D10"), NodePath("Perceptron/RayCast3D11")])
 
@@ -132,6 +132,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+&"": ExtResource("2_t3cif")
+}
 tree_root = SubResource("AnimationNodeStateMachine_x18b3")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(-0.872629, 0.352381)
@@ -203,3 +206,7 @@ metadata/_custom_type_script = "uid://dievtw4ea6dt4"
 [node name="Scared" type="Node" parent="StateChart/Root"]
 script = ExtResource("6_h6x72")
 metadata/_custom_type_script = "uid://dievtw4ea6dt4"
+
+[node name="ForwardVector" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+debug_shape_custom_color = Color(1, 0, 0, 1)

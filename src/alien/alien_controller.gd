@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var speed: float = 126.0
 @export var turn_speed: float = 1.0
 @export var planet_center: Vector3 = Vector3(0, 0, 0)
+@onready var forward_vector
 
 @export var sensor_paths: Array[NodePath] = []
 
@@ -12,6 +13,7 @@ var _sensors: Array = []
 var _planet_up: Vector3
 
 func _ready() -> void:
+	forward_vector = $ForwardVector.target_position
 	for path in sensor_paths:
 		if has_node(path):
 			_sensors.append(get_node(path))
@@ -69,11 +71,10 @@ func calculate_avoidance_vector(forward_dir: Vector3) -> Vector3:
 	for sensor in _sensors:
 		if sensor.is_colliding():
 			# One approach: compare the direction of the sensor to our forward axis
-			var sensor_pos = sensor.global_position
-			var sensor_dir = (sensor_pos - global_position).normalized()
+			var sensor_dir = sensor.target_position
 
 			# Cross forward_dir and sensor_dir to see which side it’s on:
-			var cross_val = forward_dir.cross(sensor_dir)
+			var cross_val = forward_vector.cross(sensor_dir)
 			var side_sign = cross_val.dot(_planet_up)
 
 			if side_sign > 0.0:
@@ -104,8 +105,6 @@ func turn_towards_direction(target_dir: Vector3, delta: float) -> void:
 	var angle = acos(dot_val)
 	if angle > 0.001:
 		var cross_val = flat_forward.cross(flat_target)
-		# sign of angle depends on whether cross is "above" or "below" planet_up
-		angle *= sign(cross_val.dot(_planet_up))
 
 		var max_turn = turn_speed * delta
 		angle = clamp(angle, -max_turn, max_turn)

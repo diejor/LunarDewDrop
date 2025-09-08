@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://pjyib08moymi" path="res://assets/sprites/inventory.png" id="1_i4jpw"]
 [ext_resource type="Script" uid="uid://ljp78vie60vq" path="res://src/ui/hud.gd" id="1_r2cn7"]
-[ext_resource type="Script" uid="uid://bbg2gbv21jjxp" path="res://src/player/items_keeper.gd" id="2_0isw4"]
+[ext_resource type="Script" uid="uid://bbg2gbv21jjxp" path="res://src/player/item_keeper.gd" id="2_0isw4"]
 [ext_resource type="Texture2D" uid="uid://d2ciyc0r088ij" path="res://assets/sprites/weaponCharge.png" id="2_r2cn7"]
 [ext_resource type="Texture2D" uid="uid://crhxdcupst2hu" path="res://assets/sprites/healthbar.png" id="3_0isw4"]
 [ext_resource type="Texture2D" uid="uid://dxp7uaaaua14j" path="res://assets/sprites/healthbarHeart.png" id="4_vbpn1"]
