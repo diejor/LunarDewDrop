@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b6unlf0fp5uys"]
+
+[ext_resource type="Script" uid="uid://etpe5ihi5hsr" path="res://src/items/item_resource.gd" id="1_8ifim"]
+[ext_resource type="Script" uid="uid://du7tqvcy1ynky" path="res://src/player/inventory_resource.gd" id="2_b0kkn"]
+
+[resource]
+script = ExtResource("2_b0kkn")

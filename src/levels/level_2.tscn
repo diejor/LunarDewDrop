@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://bku06nnwpk2hw" path="res://src/player/camera.gd" id="6_7g6o4"]
 [ext_resource type="PackedScene" uid="uid://ngj6kjmcs6py" path="res://src/planet/face.tscn" id="7_uxcgt"]
 [ext_resource type="PackedScene" uid="uid://byodlr5imq2j7" path="res://src/alien/alien.tscn" id="8_7gubv"]
-[ext_resource type="PackedScene" uid="uid://c575d2sfnlfl8" path="res://src/drops/dew_drop.tscn" id="9_w2s1y"]
+[ext_resource type="PackedScene" uid="uid://c575d2sfnlfl8" path="res://src/items/dew_drop.tscn" id="9_w2s1y"]
 
 [sub_resource type="Animation" id="Animation_frwdw"]
 resource_name = "start_level"

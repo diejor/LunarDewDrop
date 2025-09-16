@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="HealthResource" load_steps=3 format=3 uid="uid://q67b0ypb13kn"]
+
+[ext_resource type="Script" uid="uid://c7vxjiaau13s0" path="res://src/items/health_resource.gd" id="1_4evhr"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ybc43"]
+load_path = "res://.godot/imported/healthbarHeart.png-3d5fb4f4e2075699220dafda7c82f25f.ctex"
+
+[resource]
+script = ExtResource("1_4evhr")
+texture = SubResource("CompressedTexture2D_ybc43")
+metadata/_custom_type_script = "uid://c7vxjiaau13s0"

@@ -558,6 +558,9 @@ libraries = {
 blend_times = [&"button_clicked", &"button_clicked", 1.0]
 
 [node name="SongsMixer" type="AnimationTree" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0dwhk")
+}
 tree_root = SubResource("AnimationNodeStateMachine_ri2wq")
 anim_player = NodePath("../SongsPlayer")
 parameters/conditions/is_level1 = false

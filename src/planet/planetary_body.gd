@@ -3,10 +3,7 @@ extends RigidBody3D
 
 @export var gravity_strength = 9.8
 
-@export var type = "dewdrop"
-
 func _ready() -> void:
-	# Optionally disable built-in gravity if not needed
 	gravity_scale = 0
 
 func _integrate_forces(state: PhysicsDirectBodyState3D) -> void:

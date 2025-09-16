@@ -1,6 +1,6 @@
 extends Node
 
-var dewdrop: PackedScene = preload("res://src/drops/dew_drop.tscn")
+var dewdrop: PackedScene = preload("res://src/items/dew_drop.tscn")
 
 var health = 3
 

@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c575d2sfnlfl8"]
+
+[ext_resource type="Script" uid="uid://drlpuoi4jihxo" path="res://src/items/item_drop.gd" id="1_v15b1"]
+[ext_resource type="Texture2D" uid="uid://ch6o6tspygb1i" path="res://assets/sprites/dewdrop.png" id="2_bi5b8"]
+[ext_resource type="PackedScene" uid="uid://ofrxlebbknri" path="res://src/player/shadow.tscn" id="3_y7ybi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_frwdw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fcumj"]
+
+[node name="DewDrop" type="RigidBody3D"]
+collision_layer = 16
+collision_mask = 4
+mass = 1000.0
+physics_material_override = SubResource("PhysicsMaterial_frwdw")
+angular_damp_mode = 1
+script = ExtResource("1_v15b1")
+resource_path = "res://src/items/dew.tres"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = SubResource("SphereShape3D_fcumj")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.002
+billboard = 1
+texture = ExtResource("2_bi5b8")
+
+[node name="Shadow" parent="." instance=ExtResource("3_y7ybi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.41625, 0)
+size = Vector3(0.5, 10, 0.5)

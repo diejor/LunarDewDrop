@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=4 format=3 uid="uid://dn8w5lxhnt0mn"]
+
+[ext_resource type="Script" uid="uid://etpe5ihi5hsr" path="res://src/items/item_resource.gd" id="1_4e2mc"]
+[ext_resource type="PackedScene" uid="uid://mlql0ptiv6ms" path="res://src/items/charge_drop.tscn" id="1_rb8or"]
+[ext_resource type="Texture2D" uid="uid://d2ciyc0r088ij" path="res://assets/sprites/weaponCharge.png" id="2_i0trw"]
+
+[resource]
+script = ExtResource("1_4e2mc")
+texture = ExtResource("2_i0trw")
+scene = ExtResource("1_rb8or")
+metadata/_custom_type_script = "uid://etpe5ihi5hsr"
