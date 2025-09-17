@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cn2yf7ck48glt"]
+
+[ext_resource type="PackedScene" uid="uid://c5tsraofdy5sm" path="res://src/items/item_body.tscn" id="1_5yrnu"]
+[ext_resource type="Texture2D" uid="uid://dxp7uaaaua14j" path="res://assets/sprites/healthbarHeart.png" id="2_pdgqc"]
+
+[node name="Health" instance=ExtResource("1_5yrnu")]
+
+[node name="Sprite3D" parent="." index="1"]
+texture = ExtResource("2_pdgqc")

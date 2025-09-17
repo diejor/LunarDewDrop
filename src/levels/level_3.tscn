@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ckij0v4d64pc3"]
+[gd_scene load_steps=27 format=3 uid="uid://ckij0v4d64pc3"]
 
 [ext_resource type="Script" uid="uid://bcot0vqyd13tp" path="res://src/levels/level_1.gd" id="1_lv42w"]
 [ext_resource type="Material" uid="uid://cle16r2v5m6bx" path="res://src/planet/material_planet.tres" id="2_kt24x"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://bku06nnwpk2hw" path="res://src/player/camera.gd" id="6_pj55v"]
 [ext_resource type="PackedScene" uid="uid://ngj6kjmcs6py" path="res://src/planet/face.tscn" id="7_g6367"]
 [ext_resource type="PackedScene" uid="uid://byodlr5imq2j7" path="res://src/alien/alien.tscn" id="8_f4emq"]
-[ext_resource type="PackedScene" uid="uid://c575d2sfnlfl8" path="res://src/items/dew_drop.tscn" id="9_t31p4"]
 
 [sub_resource type="Animation" id="Animation_frwdw"]
 resource_name = "start_level"
@@ -184,9 +183,6 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_l80tk"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_q2d1y"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Level" type="Node3D"]
 script = ExtResource("1_lv42w")
 
@@ -200,13 +196,13 @@ libraries = {
 environment = SubResource("Environment_0xm2m")
 
 [node name="Planet" type="VoxelLodTerrain" parent="."]
-generator = SubResource("VoxelGeneratorGraph_7dm0k")
-mesher = SubResource("VoxelMesherTransvoxel_ig7tw")
-gi_mode = 1
 material = ExtResource("2_kt24x")
 collision_layer = 2
 collision_mask = 0
 mesh_block_size = 32
+generator = SubResource("VoxelGeneratorGraph_7dm0k")
+mesher = SubResource("VoxelMesherTransvoxel_ig7tw")
+gi_mode = 1
 
 [node name="Platform" parent="." instance=ExtResource("3_h6cqc")]
 
@@ -268,16 +264,6 @@ texture = SubResource("ViewportTexture_l80tk")
 [node name="Label" parent="Alien/InPopup/SubViewport/Control" index="0"]
 text = "shoot: [pulse freq=1.0 color=#c9232760 ease=-2.0]Q[/pulse]"
 
-[node name="DewDrop" parent="." instance=ExtResource("9_t31p4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.92052, 4.70959)
-
-[node name="InPopup" parent="DewDrop" instance=ExtResource("4_jbvka")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177597, 0.678093, 0.572556)
-texture = SubResource("ViewportTexture_q2d1y")
-
-[node name="Label" parent="DewDrop/InPopup/SubViewport/Control" index="0"]
-text = "dewdrop"
-
 [editable path="Platform"]
 [editable path="Platform/InPopup"]
 [editable path="Player"]
@@ -285,5 +271,3 @@ text = "dewdrop"
 [editable path="Face/InPopup"]
 [editable path="Alien"]
 [editable path="Alien/InPopup"]
-[editable path="DewDrop"]
-[editable path="DewDrop/InPopup"]

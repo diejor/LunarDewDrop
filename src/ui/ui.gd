@@ -8,14 +8,6 @@ var width:float = 1152
 @onready var songs_player: AnimationPlayer = $SongsPlayer
 @onready var songs_mixer: AnimationTree = $SongsMixer
 
-@onready var health1: TextureRect = %Heart1
-@onready var health2: TextureRect = %Heart2
-@onready var health3: TextureRect = %Heart3
-
-@onready var item1: TextureRect = %Item1
-@onready var item2: TextureRect = %Item2
-@onready var item3: TextureRect = %Item3
-
 @export var level1 = preload("res://src/levels/level_1.tscn")
 @export var level2 = preload("res://src/levels/level_2.tscn")
 

@@ -1,7 +1,5 @@
 extends Node
 
-var dewdrop: PackedScene = preload("res://src/items/dew_drop.tscn")
-
 var health = 3
 
 func hit() -> void:
@@ -10,7 +8,4 @@ func hit() -> void:
 	UI.sfx_player.play("alien_hit")
 	if health == 0:
 		UI.sfx_player.play("enemy_killed")
-		var dew_ref = dewdrop.instantiate()
-		dew_ref.position = $"../Marker3D".global_position
-		$"../..".add_child(dew_ref)
 		$"..".queue_free()

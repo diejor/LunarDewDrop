@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://fihq72kc1a2c"]
+
+[ext_resource type="PackedScene" uid="uid://c5tsraofdy5sm" path="res://src/items/item_body.tscn" id="1_y4u4f"]
+[ext_resource type="Texture2D" uid="uid://ch6o6tspygb1i" path="res://assets/sprites/dewdrop.png" id="2_ptvnk"]
+
+[node name="Dew" instance=ExtResource("1_y4u4f")]
+
+[node name="Sprite3D" parent="." index="1"]
+texture = ExtResource("2_ptvnk")
